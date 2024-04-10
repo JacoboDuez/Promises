@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+        function MakeSandwich(fillings){
+            var sandwichPromise = new Promise(function(resolve,reject){
+                resolve(`your sandwich fillings are ${fillings.join(' ')}`);
+            });
+            return sandwichPromise;    
+        }
+        function triggerFunctions(){
+        const italianSandwichPromise =  MakeSandwich(['salami','pastrami','ham']);
+        italianSandwichPromise.then(function(sandwich){
+            console.log(sandwich);
+            const element=  document.getElementById('root');
+            element.innerHTML = element.innerHTML + '<br>' + sandwich;
+        })
+        const tunaSandwichPromise =  MakeSandwich(['tuna','mayonnaise']);
+        tunaSandwichPromise.then(function(sandwich){
+            console.log(sandwich);
+            const element=  document.getElementById('root');
+            element.innerHTML = element.innerHTML + '<br>' + sandwich;
+        });
+
+    }
+</script>
+<body>
+
+    <button style="border-radius:5px; background-color:blue;" onclick="triggerFunctions()">Run Sandwich Promise</button>
+    <div id="root"></div>
+</body>
+</html>
